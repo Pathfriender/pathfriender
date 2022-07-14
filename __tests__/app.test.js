@@ -2,13 +2,17 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const diceroller = require('../lib/commands/dice-roll');
 
-describe('backend-express-template routes', () => {
+
+describe('pathfriender routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('example test - delete me!', () => {
-    expect(1).toEqual(1);
+  it('roll the dice', async() => {
+    const roll = await diceroller(20, 1);
+    expect(roll).toBeGreaterThanOrEqual(1);
+    expect(roll).toBeLessThanOrEqual(20);
   });
   afterAll(() => {
     pool.end();
