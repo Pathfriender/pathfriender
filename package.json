@@ -32,11 +32,17 @@
     "supertest": "^6.2.3"
   },
   "dependencies": {
+    "@discordjs/builders": "^0.15.0",
+    "@discordjs/rest": "^0.5.0",
     "bcrypt": "^5.0.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
+<<<<<<< HEAD
     "discord-reply": "^0.1.2",
+=======
+    "discord-api-types": "^0.36.1",
+>>>>>>> 401477a3cd3e0f82819c0d86b7cd5edd69c4029e
     "discord.js": "^13.8.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
