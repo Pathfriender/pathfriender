@@ -14,14 +14,7 @@ CREATE TABLE skills (
   skill_stat TEXT
 );
 
-CREATE TABLE character_skills (
-  character_skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  character_id INTEGER,
-  skill_id INTEGER,
-  bonus INTEGER, 
-  FOREIGN KEY (character_id) REFERENCES characters(character_id),
-  FOREIGN KEY (skill_id) REFERENCES skills(skills_id)
-);
+
 
 CREATE TABLE characters(
     character_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -39,17 +32,15 @@ CREATE TABLE characters(
     wisdom INT,
     charisma INT
 );
-CREATE TABLE inventory (
-    inventory_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    character_id INT,
-    weapon_id BIGINT,
-    armor_id BIGINT,
-    item_id BIGINT
-    FOREIGN KEY (character_id) REFERENCES characters(character_id),
-    FOREIGN KEY (weapon_id) REFERENCES weapons(weapon_id),
-    FOREIGN KEY (armor_id) REFERENCES armors(armor_id),
-    FOREIGN KEY (item_id) REFERENCES items(item_id)
+CREATE TABLE character_skills (
+  character_skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  character_id INTEGER,
+  skill_id INTEGER,
+  bonus INTEGER, 
+  FOREIGN KEY (character_id) REFERENCES characters(character_id),
+  FOREIGN KEY (skill_id) REFERENCES skills(skills_id)
 );
+
 CREATE TABLE armor (
     armor_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     armor_name TEXT,
@@ -73,6 +64,17 @@ CREATE TABLE items (
     item_name TEXT,
     item_type TEXT,
     item_description TEXT
+);
+CREATE TABLE inventory (
+    inventory_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    character_id INT,
+    weapon_id BIGINT,
+    armor_id BIGINT,
+    item_id BIGINT,
+    FOREIGN KEY (character_id) REFERENCES characters(character_id),
+    FOREIGN KEY (weapon_id) REFERENCES weapons(weapon_id),
+    FOREIGN KEY (armor_id) REFERENCES armor(armor_id),
+    FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
 INSERT INTO skills
 (skill_name, skill_stat)
