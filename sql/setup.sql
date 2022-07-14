@@ -21,9 +21,9 @@ CREATE TABLE character_skills (
 
 CREATE TABLE characters(
     character_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    user_id INTEGER,
+    user_id BIGINT,
     character_name TEXT,
-    experience INTEGER,
+    experience BIGINT,
     class TEXT,
     race TEXT,
     dexterity INT,
@@ -33,6 +33,20 @@ CREATE TABLE characters(
     wisdom INT,
     charisma INT
 );
+
+INSERT INTO characters(
+    user_id,
+    character_name,
+    experience,
+    class,
+    race,
+    dexterity,
+    strength,
+    intelligence,
+    constitution,
+    wisdom,
+    charisma)
+VALUES (168878383856353281, 'K''rrok Sshvashiek', 48000, 'Monk', 'Kobold', 20, 8, 13, 16, 18, 10);
 
 INSERT INTO skills
 (skill_name, skill_stat)
@@ -56,4 +70,3 @@ VALUES
 ('sleight of hand','dexterity'),
 ('stealth','dexterity'),
 ('survival','wisdom');
-
