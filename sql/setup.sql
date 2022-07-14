@@ -24,6 +24,7 @@ CREATE TABLE characters(
     user_id INTEGER,
     character_name TEXT,
     experience INTEGER,
+    class TEXT,
     race TEXT,
     dexterity INT,
     strength INT,
