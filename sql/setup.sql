@@ -7,21 +7,21 @@ DROP TABLE IF EXISTS character_skills;
 DROP TABLE IF EXISTS characters CASCADE;
 
 CREATE TABLE skills (
-  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   skill_name TEXT,
   skill_stat TEXT
 );
 
 CREATE TABLE character_skills (
-  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  character_skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   character_id INTEGER,
   skill_id INTEGER,
   bonus INTEGER  
 );
 
 CREATE TABLE characters(
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    character_id INTEGER,
+    character_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    user_id INTEGER,
     character_name TEXT,
     experience INTEGER,
     race TEXT,
@@ -29,7 +29,7 @@ CREATE TABLE characters(
     strength INT,
     intelligence INT,
     constitution INT,
-    wisdow INT,
+    wisdom INT,
     charisma INT
 );
 
