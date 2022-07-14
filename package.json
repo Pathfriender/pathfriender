@@ -42,11 +42,15 @@
 <<<<<<< HEAD
 =======
     "discord-api-types": "^0.36.1",
+<<<<<<< HEAD
 >>>>>>> b196f1e2b79861c4ec11ed8f5267544b851b7694
     "discord-reply": "^0.1.2",
 =======
     "discord-api-types": "^0.36.1",
 >>>>>>> 401477a3cd3e0f82819c0d86b7cd5edd69c4029e
+=======
+    "discord-reply": "^0.1.2",
+>>>>>>> 32f66408163a04549b68fd3606880bb83cf467cc
     "discord.js": "^13.8.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
