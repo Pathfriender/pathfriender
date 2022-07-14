@@ -39,6 +39,10 @@
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    "discord-api-types": "^0.36.1",
+>>>>>>> b196f1e2b79861c4ec11ed8f5267544b851b7694
     "discord-reply": "^0.1.2",
 =======
     "discord-api-types": "^0.36.1",
