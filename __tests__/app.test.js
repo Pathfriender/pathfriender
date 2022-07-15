@@ -9,10 +9,9 @@ describe('pathfriender routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  it('roll the dice', async() => {
-    const roll = await diceroller(20, 1);
-    expect(roll).toBeGreaterThanOrEqual(1);
-    expect(roll).toBeLessThanOrEqual(20);
+  it('makes a new character', async() => {
+    
+    
   });
   afterAll(() => {
     pool.end();
