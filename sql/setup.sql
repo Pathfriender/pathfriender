@@ -30,6 +30,7 @@ CREATE TABLE characters(
     wisdom INT,
     charisma INT
 );
+
 CREATE TABLE character_skills (
   character_skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   character_id INTEGER,
