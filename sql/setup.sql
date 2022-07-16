@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS inventory CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
 DROP TABLE IF EXISTS weapons CASCADE;
 DROP TABLE IF EXISTS armor CASCADE;
+DROP TABLE IF EXISTS proficiencies CASCADE;
 
 CREATE TABLE skills (
   skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -21,6 +22,7 @@ CREATE TABLE characters(
     experience BIGINT,
     class TEXT,
     race TEXT,
+    -- subrace int column?
     feats TEXT,
     background TEXT,
     dexterity INT,
@@ -30,7 +32,7 @@ CREATE TABLE characters(
     wisdom INT,
     charisma INT
 );
-
+/
 CREATE TABLE character_skills (
   character_skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   character_id INTEGER,
@@ -97,3 +99,10 @@ VALUES
 ('sleight of hand','dexterity'),
 ('stealth','dexterity'),
 ('survival','wisdom');
+
+CREATE TABLE proficiencies(
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY  ,
+    skill_id INT,
+    character_id INT,
+    FOREIGN KEY (character_id) REFERENCES characters(character_id),
+    FOREIGN KEY (skill_id) REFERENCES skills(skill_id),)
