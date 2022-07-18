@@ -2,7 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS characters CASCADE;
 DROP TABLE IF EXISTS character_skills;
-DROP TABLE IF EXISTS skills;
+DROP TABLE IF EXISTS skills CASCADE;
 DROP TABLE IF EXISTS inventory CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
 DROP TABLE IF EXISTS weapons CASCADE;
