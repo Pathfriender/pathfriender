@@ -9,25 +9,28 @@ describe('Character routes', () => {
 
     return setup(pool);
   });
-
+  it('fetches a character by character id and returns characters name', async () => {
+    const res = await Character.getName(1);
+    expect(res).toBe('test');
+  });  
   it('fetches a character by user id and returns characters name', async () => {
     const res = await Character.getCharNameByUserId(1);
     expect(res).toBe('test');
   });  
+  it('Gets stats of a characters name', async () => {
+    const res = await Character.getStats('test');
+    expect(res.charisma).toBe(10);
+    expect(res.strength).toBe(10);
+    expect(res.dexterity).toBe(10);
+    expect(res.intelligence).toBe(10);
+    expect(res.constitution).toBe(10);
+    expect(res.wisdom).toBe(10);
+  });
+  it('Gets dex stat by character name', async () => {
+    const res = await Character.getDex('test');
+    expect(res).toEqual(10);
+  });
 });  
-it('Gets stats of a characters name', async () => {
-  const res = await Character.getStats('test');
-  expect(res.charisma).toBe(10);
-  expect(res.strength).toBe(10);
-  expect(res.dexterity).toBe(10);
-  expect(res.intelligence).toBe(10);
-  expect(res.constitution).toBe(10);
-  expect(res.wisdom).toBe(10);
-});
-it('Gets dex stat by character name', async () => {
-  const res = await Character.getDex('test');
-  expect(res).toEqual(10);
-});
 
 
 afterAll(() => {
