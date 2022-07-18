@@ -1,10 +1,9 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
-// const request = require('supertest');
-// const app = require('../lib/app');
 const  { disadvantageRoller } = require('../lib/utils/disadvantage-roller.js');
 const { advantageRoller } = require('../lib/utils/advantage-roller.js');
 const { statRoller } = require('../lib/utils/roller.js');
+
 describe('pathfriender routes', () => {
   beforeEach(() => {
     return setup(pool);
