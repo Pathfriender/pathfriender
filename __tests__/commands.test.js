@@ -9,7 +9,7 @@ describe('Character routes', () => {
     return setup(pool);
   });
 
-  it('fetch a character', async () => {
+  it('fetch a character name by id', async () => {
     const res = await Character.getCharNameByUserId(1);
     expect(res).toBe('test');
   });  
