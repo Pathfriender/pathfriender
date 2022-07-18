@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS armor CASCADE;
 DROP TABLE IF EXISTS proficiencies CASCADE;
 
 CREATE TABLE skills (
-  skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  skill_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   skill_name TEXT,
   skill_stat TEXT
 );
@@ -32,14 +32,14 @@ CREATE TABLE characters(
     wisdom INT,
     charisma INT
 );
-/
+
 CREATE TABLE character_skills (
   character_skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   character_id INTEGER,
   skill_id INTEGER,
   bonus INTEGER, 
   FOREIGN KEY (character_id) REFERENCES characters(character_id),
-  FOREIGN KEY (skill_id) REFERENCES skills(skills_id)
+  FOREIGN KEY (skill_id) REFERENCES skills(skill_id)
 );
 
 CREATE TABLE armor (
@@ -77,6 +77,7 @@ CREATE TABLE inventory (
     FOREIGN KEY (armor_id) REFERENCES armor(armor_id),
     FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
+
 INSERT INTO skills
 (skill_name, skill_stat)
 
@@ -105,4 +106,4 @@ CREATE TABLE proficiencies(
     skill_id INT,
     character_id INT,
     FOREIGN KEY (character_id) REFERENCES characters(character_id),
-    FOREIGN KEY (skill_id) REFERENCES skills(skill_id),)
+    FOREIGN KEY (skill_id) REFERENCES skills(skill_id))
