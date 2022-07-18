@@ -1,25 +1,22 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const  Character = require ('../lib/models/Character');
 
-const ping = {
-  data: new SlashCommandBuilder()
-    .setName('ping')
-    .setDescription('Replies with Pong!'),
-  async execute(interaction) {
-    return interaction.reply('Pong!');
-  },
-};
- 
-describe('pathfriender routes', () => {
+
+describe('Character routes', () => {
   beforeEach(() => {
+
     return setup(pool);
   });
-  it('sends ping and returns pong', async() => {
-    const data = ping.data.SlashCommandBuilder();
-    expect(data).toBe('Pong!');
-  });
+
+  it('fetch a character', async () => {
+    const res = await Character.getCharNameByUserId(1);
+    expect(res).toBe('test');
+  });  
 });
+
 afterAll(() => {
   pool.end();
 });
+
+

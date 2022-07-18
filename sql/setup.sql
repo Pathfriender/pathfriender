@@ -101,9 +101,33 @@ VALUES
 ('stealth','dexterity'),
 ('survival','wisdom');
 
-CREATE TABLE proficiencies(
-    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY  ,
-    skill_id INT,
-    character_id INT,
-    FOREIGN KEY (character_id) REFERENCES characters(character_id),
-    FOREIGN KEY (skill_id) REFERENCES skills(skill_id))
+INSERT INTO characters(
+    user_id, 
+    character_name, 
+    experience, 
+    class, 
+    race, 
+    feats, 
+    background, 
+    dexterity, 
+    strength, 
+    intelligence, 
+    constitution, 
+    wisdom,
+    charisma)
+    
+    VALUES('1', 
+    'test', 
+    '1', 
+    'testclass', 
+    'testrace', 
+    'testfeats', 
+    'testbackground', 
+    '10', '10', '10', '10', '10', '10');
+
+-- CREATE TABLE proficiencies(
+--     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY  ,
+--     skill_id INT,
+--     character_id INT,
+--     FOREIGN KEY (character_id) REFERENCES characters(character_id),
+--     FOREIGN KEY (skill_id) REFERENCES skills(skill_id),)
