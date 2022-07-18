@@ -106,8 +106,7 @@ INSERT INTO characters(
     character_name, 
     experience, 
     class, 
-    race, 
-    feats, 
+    race,  
     background, 
     dexterity, 
     strength, 
@@ -116,13 +115,13 @@ INSERT INTO characters(
     wisdom,
     charisma)
     
-    VALUES('1', 
-    'test', 
+    VALUES(
     '1', 
-    'testclass', 
-    'testrace', 
-    'testfeats', 
-    'testbackground', 
+    'test', 
+    '1',
+    'barbarian',
+    'gnome',
+    'urchin',
     '10', '10', '10', '10', '10', '10');
 
 -- CREATE TABLE proficiencies(
