@@ -46,7 +46,7 @@ describe('Character routes', () => {
     expect(res).toEqual(10);
   });
   it('Creates a new character', async () => {
-    await Character.makeCharacter(newCharacter.user_id,  { ...newCharacter });
+    await Character.makeCharacter(1, 'Theodore', { ...newCharacter });
     const res = await Character.getDex('Theodore');
     console.log('pizza', res);
   });
