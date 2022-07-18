@@ -1,7 +1,8 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const  Character = require ('../lib/models/Character');
-
+// const app = require('../lib/app');
+// const request = require('supertest');
 
 describe('Character routes', () => {
   beforeEach(() => {
@@ -22,7 +23,11 @@ it('Gets stats of a characters name', async () => {
   expect(res.intelligence).toBe(10);
   expect(res.constitution).toBe(10);
   expect(res.wisdom).toBe(10);
-});  
+});
+it('Gets dex stat by character name', async () => {
+  const res = await Character.getDex('test');
+  expect(res).toEqual(10);
+});
 
 
 afterAll(() => {
