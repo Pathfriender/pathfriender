@@ -684,9 +684,11 @@ INSERT INTO characters(
     
     VALUES(
     '1', 
-    'testclass', 
-    'testrace', 
-    'testbackground', 
+    'test', 
+    '1',
+    'barbarian',
+    'gnome',
+    'urchin',
     '10', '10', '10', '10', '10', '10');
 
 -- CREATE TABLE proficiencies(
