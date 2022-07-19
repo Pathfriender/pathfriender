@@ -41,17 +41,18 @@ describe('Character routes', () => {
     expect(res.constitution).toBe(10);
     expect(res.wisdom).toBe(10);
   });
-  it('Gets dex stat by character name', async () => {
-    const res = await Character.getDex('test');
-    expect(res).toEqual(10);
-  });
-  it.skip('Creates a new character', async () => {
-    await Character.makeCharacter(1, 'Theodore', { ...newCharacter });
-    const res = await Character.getDex('Theodore');
-    console.log('pizza', res);
-  });
   it('gets character experience points', async () => {
-    const xp = Character.add('test', 100);
+    const res = await Character.getXp('test');
+    expect(res).toBe('1');
+  });  
+  it('Increments the total of experience a character has', async () => {
+    const res = await Character.addXp('test', 100);
+    expect(res).toBe('101');
+  });
+  it('Deletes a character', async () => {
+    await Character.deleteCharacter('test');
+    const res = await Character.getName(1);
+    expect(res).toBe('');
   });
 });  
 
