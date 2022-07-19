@@ -1,12 +1,14 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS characters CASCADE;
+DROP TABLE IF EXISTS feats CASCADE;
+DROP TABLE IF EXISTS character_feats;
 DROP TABLE IF EXISTS character_skills;
 DROP TABLE IF EXISTS skills CASCADE;
 DROP TABLE IF EXISTS inventory CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
 DROP TABLE IF EXISTS weapons_table CASCADE;
-DROP TABLE IF EXISTS armor CASCADE;
+DROP TABLE IF EXISTS armortable CASCADE;
 DROP TABLE IF EXISTS proficiencies CASCADE;
 DROP TABLE IF EXISTS armortable CASCADE;
 DROP TABLE IF EXISTS armortable CASCADE;
@@ -113,8 +115,8 @@ CREATE TABLE characters(
     experience BIGINT,
     class TEXT,
     race TEXT,
-    -- subrace int column?
     feats TEXT,
+    -- subrace int column?
     background TEXT,
     dexterity INT,
     strength INT,
@@ -123,6 +125,69 @@ CREATE TABLE characters(
     wisdom INT,
     charisma INT
 );
+
+CREATE TABLE feats(
+    feat_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    feat_name TEXT,
+    feat_desc TEXT
+);
+
+INSERT INTO feats(feat_name, feat_desc)
+VALUES
+   ('Fey Ancestry', 'Advantage on saving throws against being charmed, and magic can''t put you to sleep.'),
+   ('Sunlight Sensitivity', 'You have disadvantage on attack rolls and Wisdom (Perception) checks that rely on sight when you,
+   the target of the attack, or whatever you are trying to perceive is in direct sunlight.'),
+   ('Unending Breath', 'You can hold your breath indefinitely while you''re not incapacitated.'),
+   ('Earth Walk', 'You can move across difficult terrain made of earth or stone without expending extra movement.'),
+   ('Fire Resistance', 'You have resistance to fire damage.'),
+   ('Acid Resistance', 'You have resistance to acid damage.'),
+   ('Amphibious', 'You can breathe air and water.'),
+   ('Celestial Resistance', 'You have resisistance to necrotic and radiant damage'),
+   ('Healing Hands', 'As an action, you can touch a creature and cause it to regain a number of hit points equal to your level.
+   Once you use this trait, you can''t use it again until you finish a long rest.'),
+   ('Stonecunning', 'Whenever you make an Intelligence (History) check related to the origin of stonework,
+   you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.'),
+   ('Dwarven Resilience', 'You have advantage on saving throws against poison, and you have resistance against poison damage.'),
+   ('Breath Weapon', 'You can use your action to exhale destructive energy.
+   It deals damage in an area according to your ancestry.  When you use your breath weapon, all creatures in the area must make a saving throw, the type of which is determined by your ancestry.
+   The DC of this saving throw is 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one.
+   The damage increase to 3d6 at 6th level, 4d6 at 11th, and 5d6 at 16th level.
+   After using your breath weapon, you cannot use it again until you complete a short or long rest.'),
+   ('Draconic Ancestry', 'You are distantly related to a specific type of dragon.
+   Whichever of the following you are related to, you have resistance to that damage type and your breath weapon deals that type of damage.
+   Black = Acid
+   Blue = Lightning
+   Brass = Fire
+   Bronze = Lightning
+   Copper = Acid
+   Gold = Fire
+   Green = Poison
+   Red = Fire
+   Silver = Cold
+   White = Cold'),
+   ('Gnome Cunning', 'You have advantage on all Intelligence, Wisdom, and Charisma saves against magic.'),
+   ('Relentless Endurance', 'When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can''t use this feature again until you finish a long rest.'),
+   ('Savage Attacks', 'When you score a critical hit with a melee weapon attack, you can roll one of the weapon''s damage dice one additional time and add it to the extra damage of the critical hit.'),
+   ('Lucky', 'When you roll a 1 on an attack roll, ability check, or saving throw, you can reroll the die. You must use the new result, even if it is a 1.'),
+   ('Brave', 'You have advantage on saving throws against being frightened.'),
+   ('Nimble', 'You can move through the space of any creature that is of a size larger than yours.'),
+   ('Feline Agility', 'Your reflexes and agility allow you to move with a burst of speed. When you move on your turn in combat, you can double your speed until the end of the turn.
+   Once you use this trait, you can''t use it again until you move 0 feet on one of your turns.'),
+   ('Cat''s Claws', 'Because of your claws, you have a climbing speed of 20 feet. In addition, your claws are natural weapons, which you can use to make unarmed strikes.
+    If you hit with them, you deal slashing damage equal to 1d4 + your Strength modifier, instead of the bludgeoning damage normal for an unarmed strike.'),
+   ('Flight', 'You have a flying speed of 50 feet. To use this speed, you can''t be wearing medium or heavy armor.'),
+   ('Grovel, Cower, and Beg', 'As an action on your turn, you can cower pathetically to distract nearby foes.
+   Until the end of your next turn, your allies gain advantage on attack rolls against enemies within 10 feet of you that can see you.
+   Once you use this trait, you can''t use it again until you finish a short or long rest.'),
+   ('Pack Tactics', 'You have advantage on an attack roll against a creature if at least one of your allies is within 5 feet of the creature and the ally isn''t incapacitated.');
+
+CREATE TABLE character_feats (
+  character_feats_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  character_id INTEGER,
+  feat_id INTEGER,
+  FOREIGN KEY (character_id) REFERENCES characters(character_id),
+  FOREIGN KEY (feat_id) REFERENCES feats(feat_id)
+); 
 
 CREATE TABLE character_skills (
   character_skills_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -133,24 +198,6 @@ CREATE TABLE character_skills (
   FOREIGN KEY (skill_id) REFERENCES skills(skill_id)
 );
 
-CREATE TABLE armor (
-    armor_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    armor_name TEXT,
-    armor_type TEXT,
-    armor_ac INT,
-    armor_weight INT,
-    armor_value INT,
-    armor_description TEXT
-);
-CREATE TABLE weapons (
-    weapon_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    weapon_name TEXT,
-    weapon_type TEXT,
-    weapon_damage TEXT,
-    weapon_weight INT,
-    weapon_value INT,
-    weapon_description TEXT
-);
 CREATE TABLE items (
     item_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     item_name TEXT,
@@ -197,7 +244,7 @@ INSERT INTO characters(
     character_name, 
     experience, 
     class, 
-    race,  
+    race, 
     background, 
     dexterity, 
     strength, 
@@ -208,11 +255,9 @@ INSERT INTO characters(
     
     VALUES(
     '1', 
-    'test', 
-    '1',
-    'barbarian',
-    'gnome',
-    'urchin',
+    'testclass', 
+    'testrace', 
+    'testbackground', 
     '10', '10', '10', '10', '10', '10');
 
 -- CREATE TABLE proficiencies(
