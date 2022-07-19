@@ -2,7 +2,10 @@ const fs = require('fs').promises;
 
 module.exports = (pool) => {
   return fs
-    .readFile(`${__dirname}/../sql/setup.sql`, { encoding: 'utf-8' })
+    .readFile(`${__dirname}/../sql/setup.sql`,  { encoding: 'utf-8' })
+    // .readFile(`${__dirname}/../sql/5eArmorSQL.sql`,  { encoding: 'utf-8' })
+    // .readFile(`${__dirname}/../sql/5eMagicItemsSQL.sql`,  { encoding: 'utf-8' })
+    // .readFile(`${__dirname}/../sql/5eWeaponsSQL.sql`,  { encoding: 'utf-8' })
     .then((sql) => pool.query(sql))
     .then(() => {
       if (process.env.NODE_ENV !== 'test') {
