@@ -51,8 +51,8 @@ describe('Character routes', () => {
   });
   it('Deletes a character', async () => {
     await Character.deleteCharacter('test');
-    const res = await Character.getName(1);
-    expect(res).toBe('');
+    const res = await Character.getStats('test');
+    expect(res).toBe(null);
   });
 });  
 
