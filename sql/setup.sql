@@ -5,10 +5,8 @@ DROP TABLE IF EXISTS character_skills;
 DROP TABLE IF EXISTS skills CASCADE;
 DROP TABLE IF EXISTS inventory CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
-DROP TABLE IF EXISTS weapons CASCADE;
-DROP TABLE IF EXISTS armor CASCADE;
 DROP TABLE IF EXISTS proficiencies CASCADE;
-DROP TABLE IF EXISTS armortable CASCADE;
+DROP TABLE IF EXISTS armor_table CASCADE;
 DROP TABLE IF EXISTS weapons_table CASCADE;
 DROP TABLE IF EXISTS magic_items_table CASCADE;
 
@@ -495,7 +493,7 @@ INSERT INTO weapons_table(name,slug,category,document_slug,document_title,docume
 INSERT INTO weapons_table(name,slug,category,document_slug,document_title,document_license_url,cost,damage_dice,damage_type,weight,properties0,properties1,properties2,properties,properties3) VALUES ('Net','net','Martial Ranged Weapons','wotc-srd','Systems Reference Document','http://open5e.com/legal','1 gp','0',NULL,'3 lb.','special','thrown (range 5/15)',NULL,NULL,NULL);
 
 
-CREATE TABLE armortable(
+CREATE TABLE armor_table(
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
    name                  VARCHAR(29) NOT NULL
   ,slug                  VARCHAR(27) NOT NULL
@@ -509,24 +507,24 @@ CREATE TABLE armortable(
   ,weight                VARCHAR(30)
   ,stealth_disadvantage  VARCHAR(5) NOT NULL
 );
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Unarmored','unarmored','No Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','10 + Dex modifier',NULL,'5 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Padded','padded','Light Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','11 + Dex modifier',NULL,'5 gp',NULL,'true');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Leather','leather','Light Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','11 + Dex modifier',NULL,'10 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Studded Leather','studded-leather','Light Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','12 + Dex modifier',NULL,'45 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Hide','hide','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','12 + Dex modifier (max 2)',NULL,'10 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Chain Shirt','chain-shirt','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','13 + Dex modifier (max 2)',NULL,'50 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Scale mail','scale-mail','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','14 + Dex modifier (max 2)',NULL,'50 gp',NULL,'true');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Breastplate','breastplate','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','14 + Dex modifier (max 2)',NULL,'400 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Half plate','half-plate','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','15 + Dex modifier (max 2)',NULL,'750 gp',NULL,'true');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Ring mail','ring-mail','Heavy Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','14',NULL,'30 gp',NULL,'true');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Chain mail','chain-mail','Heavy Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','16',13,'75 gp',NULL,'true');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Splint','splint','Heavy Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','17',15,'200 gp',NULL,'true');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Plate Mail','plate-mail','Heavy Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','18',15,'1500 gp',NULL,'true');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Mage Armor','mage-armor','Spell','wotc-srd','Systems Reference Document','http://open5e.com/legal','13 + Dex modifier',NULL,'0 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Unarmored Defense (Barbarian)','unarmored-defense-barbarian','Class Feature','wotc-srd','Systems Reference Document','http://open5e.com/legal','10 + Dex modifier + Con modifier',NULL,'0 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Unarmored Defense (Monk)','unarmored-defense-monk','Class Feature','wotc-srd','Systems Reference Document','http://open5e.com/legal','10 + Dex modifier + Wis modifier',NULL,'0 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Draconic Resilience','draconic-resilience','Class Feature','wotc-srd','Systems Reference Document','http://open5e.com/legal','13 + Dex modifier',NULL,'0 gp',NULL,'false');
-INSERT INTO armortable(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Shield','shield','Shield','wotc-srd','Systems Reference Document','http://open5e.com/legal','0 +2',NULL,'10 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Unarmored','unarmored','No Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','10 + Dex modifier',NULL,'5 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Padded','padded','Light Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','11 + Dex modifier',NULL,'5 gp',NULL,'true');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Leather','leather','Light Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','11 + Dex modifier',NULL,'10 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Studded Leather','studded-leather','Light Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','12 + Dex modifier',NULL,'45 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Hide','hide','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','12 + Dex modifier (max 2)',NULL,'10 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Chain Shirt','chain-shirt','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','13 + Dex modifier (max 2)',NULL,'50 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Scale mail','scale-mail','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','14 + Dex modifier (max 2)',NULL,'50 gp',NULL,'true');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Breastplate','breastplate','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','14 + Dex modifier (max 2)',NULL,'400 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Half plate','half-plate','Medium Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','15 + Dex modifier (max 2)',NULL,'750 gp',NULL,'true');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Ring mail','ring-mail','Heavy Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','14',NULL,'30 gp',NULL,'true');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Chain mail','chain-mail','Heavy Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','16',13,'75 gp',NULL,'true');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Splint','splint','Heavy Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','17',15,'200 gp',NULL,'true');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Plate Mail','plate-mail','Heavy Armor','wotc-srd','Systems Reference Document','http://open5e.com/legal','18',15,'1500 gp',NULL,'true');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Mage Armor','mage-armor','Spell','wotc-srd','Systems Reference Document','http://open5e.com/legal','13 + Dex modifier',NULL,'0 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Unarmored Defense (Barbarian)','unarmored-defense-barbarian','Class Feature','wotc-srd','Systems Reference Document','http://open5e.com/legal','10 + Dex modifier + Con modifier',NULL,'0 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Unarmored Defense (Monk)','unarmored-defense-monk','Class Feature','wotc-srd','Systems Reference Document','http://open5e.com/legal','10 + Dex modifier + Wis modifier',NULL,'0 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Draconic Resilience','draconic-resilience','Class Feature','wotc-srd','Systems Reference Document','http://open5e.com/legal','13 + Dex modifier',NULL,'0 gp',NULL,'false');
+INSERT INTO armor_table(name,slug,category,document_slug,document_title,document_license_url,ac_string,strength_requirement,cost,weight,stealth_disadvantage) VALUES ('Shield','shield','Shield','wotc-srd','Systems Reference Document','http://open5e.com/legal','0 +2',NULL,'10 gp',NULL,'false');
 
 
 CREATE TABLE skills (
@@ -560,25 +558,6 @@ CREATE TABLE character_skills (
   bonus INTEGER, 
   FOREIGN KEY (character_id) REFERENCES characters(character_id),
   FOREIGN KEY (skill_id) REFERENCES skills(skill_id)
-);
-
-CREATE TABLE armor (
-    armor_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    armor_name TEXT,
-    armor_type TEXT,
-    armor_ac INT,
-    armor_weight INT,
-    armor_value INT,
-    armor_description TEXT
-);
-CREATE TABLE weapons (
-    weapon_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    weapon_name TEXT,
-    weapon_type TEXT,
-    weapon_damage TEXT,
-    weapon_weight INT,
-    weapon_value INT,
-    weapon_description TEXT
 );
 CREATE TABLE items (
     item_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
