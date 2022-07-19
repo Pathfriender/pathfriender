@@ -45,10 +45,13 @@ describe('Character routes', () => {
     const res = await Character.getDex('test');
     expect(res).toEqual(10);
   });
-  it('Creates a new character', async () => {
+  it.skip('Creates a new character', async () => {
     await Character.makeCharacter(1, 'Theodore', { ...newCharacter });
     const res = await Character.getDex('Theodore');
     console.log('pizza', res);
+  });
+  it('gets character experience points', async () => {
+    const xp = Character.add('test', 100);
   });
 });  
 
