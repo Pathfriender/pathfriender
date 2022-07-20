@@ -1,5 +1,3 @@
--- Use this file to define your SQL tables
--- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS character_feats CASCADE;
 DROP TABLE IF EXISTS characters CASCADE;
 DROP TABLE IF EXISTS feats CASCADE;
