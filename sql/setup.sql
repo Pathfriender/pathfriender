@@ -636,7 +636,7 @@ CREATE TABLE inventory (
     armor_id BIGINT,
     item_id BIGINT,
     FOREIGN KEY (character_id) REFERENCES characters(character_id),
-    FOREIGN KEY (weapon_id) REFERENCES weapons_table(weapon_id),
+    FOREIGN KEY (weapon_id) REFERENCES weapons_table(id),
     FOREIGN KEY (armor_id) REFERENCES armor(armor_id),
     FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
@@ -698,9 +698,4 @@ INSERT INTO characters(
         '2'
     );
 
--- CREATE TABLE proficiencies(
---     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY  ,
---     skill_id INT,
---     character_id INT,
---     FOREIGN KEY (character_id) REFERENCES characters(character_id),
---     FOREIGN KEY (skill_id) REFERENCES skills(skill_id),)
+
