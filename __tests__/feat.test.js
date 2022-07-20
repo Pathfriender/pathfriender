@@ -8,8 +8,11 @@ describe('Feat routes', () => {
     return setup(pool);
   });
   it('gets feats from a character', async() => {
-    const res = await Feat.getFeat('1');
-    console.log(res);
+    const feats = await Feat.getFeat(1);
+    const res = feats.map((feat => {
+      return { feat: feat.feat_name };
+    }));
+    expect(res).toStrictEqual([{ 'feat' : 'Sunlight Sensitivity' }]);
   });
 });
 afterAll(() => {
