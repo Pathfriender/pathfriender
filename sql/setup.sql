@@ -637,7 +637,7 @@ CREATE TABLE inventory (
     item_id BIGINT,
     FOREIGN KEY (character_id) REFERENCES characters(character_id),
     FOREIGN KEY (weapon_id) REFERENCES weapons_table(id),
-    FOREIGN KEY (armor_id) REFERENCES armor(armor_id),
+    FOREIGN KEY (armor_id) REFERENCES armortable(id),
     FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
 
