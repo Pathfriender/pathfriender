@@ -1,5 +1,3 @@
--- Use this file to define your SQL tables
--- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS character_feats CASCADE;
 DROP TABLE IF EXISTS characters CASCADE;
 DROP TABLE IF EXISTS feats CASCADE;
@@ -7,9 +5,8 @@ DROP TABLE IF EXISTS character_skills;
 DROP TABLE IF EXISTS skills CASCADE;
 DROP TABLE IF EXISTS inventory CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
-DROP TABLE IF EXISTS weapons_table CASCADE;
 DROP TABLE IF EXISTS armortable CASCADE;
-DROP TABLE IF EXISTS proficiencies CASCADE
+DROP TABLE IF EXISTS proficiencies CASCADE;
 DROP TABLE IF EXISTS weapons_table CASCADE;
 DROP TABLE IF EXISTS magic_items_table CASCADE;
 
@@ -639,8 +636,8 @@ CREATE TABLE inventory (
     armor_id BIGINT,
     item_id BIGINT,
     FOREIGN KEY (character_id) REFERENCES characters(character_id),
-    FOREIGN KEY (weapon_id) REFERENCES weapons(weapon_id),
-    FOREIGN KEY (armor_id) REFERENCES armor(armor_id),
+    FOREIGN KEY (weapon_id) REFERENCES weapons_table(id),
+    FOREIGN KEY (armor_id) REFERENCES armortable(id),
     FOREIGN KEY (item_id) REFERENCES items(item_id)
 );
 
@@ -701,9 +698,4 @@ INSERT INTO characters(
         '2'
     );
 
--- CREATE TABLE proficiencies(
---     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY  ,
---     skill_id INT,
---     character_id INT,
---     FOREIGN KEY (character_id) REFERENCES characters(character_id),
---     FOREIGN KEY (skill_id) REFERENCES skills(skill_id),)
+
