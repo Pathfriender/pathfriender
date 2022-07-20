@@ -1,23 +1,6 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const  Character = require ('../lib/models/Character');
-// const app = require('../lib/app');
-// const request = require('supertest');
-
-const newCharacter = {
-  user_id: '1', 
-  character_name: 'Theodore', 
-  experience: '1', 
-  class: 'bard', 
-  race: 'gnome', 
-  background: 'urchin', 
-  dexterity: '11', 
-  strength: '10', 
-  intelligence: '10', 
-  constitution: '10', 
-  wisdom: '10',
-  charisma: '10'
-};
 
 describe('Character routes', () => {
   beforeEach(() => {
