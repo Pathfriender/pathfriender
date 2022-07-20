@@ -1,8 +1,7 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const  Character = require ('../lib/models/Character');
-// const app = require('../lib/app');
-// const request = require('supertest');
+
 
 
 

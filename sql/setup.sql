@@ -673,7 +673,8 @@ INSERT INTO characters(
     experience, 
     class, 
     race, 
-    background, 
+    feats, 
+    background,
     dexterity, 
     strength, 
     intelligence, 
@@ -687,8 +688,18 @@ INSERT INTO characters(
     '1',
     'barbarian',
     'gnome',
+    '2',
     'urchin',
     '10', '10', '10', '10', '10', '10');
+
+    INSERT INTO character_feats(
+        character_id,
+        feat_id
+    )
+    VALUES(
+        '1',
+        '2'
+    );
 
 -- CREATE TABLE proficiencies(
 --     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY  ,
