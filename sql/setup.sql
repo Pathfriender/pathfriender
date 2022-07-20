@@ -1,16 +1,15 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
+DROP TABLE IF EXISTS character_feats CASCADE;
 DROP TABLE IF EXISTS characters CASCADE;
 DROP TABLE IF EXISTS feats CASCADE;
-DROP TABLE IF EXISTS character_feats;
 DROP TABLE IF EXISTS character_skills;
 DROP TABLE IF EXISTS skills CASCADE;
 DROP TABLE IF EXISTS inventory CASCADE;
 DROP TABLE IF EXISTS items CASCADE;
 DROP TABLE IF EXISTS weapons_table CASCADE;
 DROP TABLE IF EXISTS armortable CASCADE;
-DROP TABLE IF EXISTS proficiencies CASCADE;
-DROP TABLE IF EXISTS armortable CASCADE;
+DROP TABLE IF EXISTS proficiencies CASCADE
 DROP TABLE IF EXISTS weapons_table CASCADE;
 DROP TABLE IF EXISTS magic_items_table CASCADE;
 
@@ -614,7 +613,7 @@ CREATE TABLE character_feats (
   character_feats_id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   character_id INTEGER,
   feat_id INTEGER,
-  FOREIGN KEY (character_id) REFERENCES characters(character_id),
+  FOREIGN KEY (character_id) REFERENCES characters(character_id) ON DELETE CASCADE,
   FOREIGN KEY (feat_id) REFERENCES feats(feat_id)
 ); 
 
