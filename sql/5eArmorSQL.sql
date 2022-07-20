@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS armortable CASCADE;
 CREATE TABLE armortable(
    name                  VARCHAR(29) NOT NULL PRIMARY KEY
   ,slug                  VARCHAR(27) NOT NULL
