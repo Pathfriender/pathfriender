@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS magic_items_table CASCADE;
+
 CREATE TABLE magic_items_table(
    slug                VARCHAR(46) NOT NULL PRIMARY KEY
   ,name                VARCHAR(46) NOT NULL

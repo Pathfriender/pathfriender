@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS weapons_table CASCADE;
 CREATE TABLE weapons_table(
    name                  VARCHAR(15) NOT NULL PRIMARY KEY
   ,slug                  VARCHAR(14) NOT NULL
