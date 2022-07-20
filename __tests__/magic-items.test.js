@@ -8,7 +8,8 @@ describe('Magic-items routes', () => {
     return setup(pool);
   });
   it('retrieves magic item by id', async() => {
-    const res = await MagicItem.getRandomMagicItemsById(1);
+    const res = await MagicItem.getRandomMagicItemById(1);
+    console.log(res);
     expect(res).toBe('Adamantine Armor');
   });
 });
