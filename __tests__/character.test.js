@@ -2,9 +2,6 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const  Character = require ('../lib/models/Character');
 
-
-
-
 describe('Character routes', () => {
   beforeEach(() => {
 
