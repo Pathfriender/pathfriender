@@ -543,6 +543,7 @@ CREATE TABLE characters(
     feats TEXT,
     -- subrace int column?
     background TEXT,
+    darkvision BOOLEAN,
     dexterity INT,
     strength INT,
     intelligence INT,
