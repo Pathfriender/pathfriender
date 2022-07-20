@@ -541,7 +541,7 @@ CREATE TABLE characters(
     class TEXT,
     race TEXT,
     feats TEXT,
-    -- subrace int column?
+    inventory TEXT DEFAULT 'Empty',
     background TEXT,
     darkvision BOOLEAN,
     dexterity INT,
