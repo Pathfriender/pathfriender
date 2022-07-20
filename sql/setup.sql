@@ -674,7 +674,8 @@ INSERT INTO characters(
     experience, 
     class, 
     race, 
-    background, 
+    feats, 
+    background,
     dexterity, 
     strength, 
     intelligence, 
@@ -688,6 +689,7 @@ INSERT INTO characters(
     '1',
     'barbarian',
     'gnome',
+    'Fey Ancestry',
     'urchin',
     '10', '10', '10', '10', '10', '10');
 

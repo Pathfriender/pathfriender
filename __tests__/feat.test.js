@@ -8,7 +8,7 @@ describe('Feat routes', () => {
     return setup(pool);
   });
   it('gets feats from a character', async() => {
-    const res = await MagicItem. getRandomMagicItemsbyId(1);
+    const res = await Feat.getFeat('1');
     console.log(res);
   });
 });
