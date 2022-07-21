@@ -9,7 +9,6 @@ describe('Magic-items routes', () => {
   });
   it('retrieves magic item by id', async() => {
     const res = await Armor.getRandomArmorById(1);
-    console.log(res);
     expect(res).toBe('Padded');
   });
 });
