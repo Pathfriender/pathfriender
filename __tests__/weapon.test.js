@@ -1,6 +1,6 @@
 const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
-const  MagicItem = require ('../lib/models/Magic-Item');
+const  Weapon = require ('../lib/models/Weapon');
 
 describe('Magic-items routes', () => {
   beforeEach(() => {
@@ -8,8 +8,8 @@ describe('Magic-items routes', () => {
     return setup(pool);
   });
   it('retrieves magic item by id', async() => {
-    const res = await MagicItem.getRandomMagicItemById(1);
-    expect(res).toBe('Adamantine Armor');
+    const res = await Weapon.getRandomWeaponById(1);
+    expect(res).toBe('Club');
   });
 });
 afterAll(() => {
